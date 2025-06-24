@@ -1,49 +1,36 @@
-\begin{thebibliography}{7}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{1}
 
-\bibitem[{\c{C}}engel et~al.(2019)]{ccengel2019termodinamica}
-Y.~A. {\c{C}}engel et~al.
-\newblock \emph{Termodin{\'a}mica}.
-\newblock Biblioteca Hern{\'a}n Malo Gonz{\'a}lez, 2019.
-
-\bibitem[Cmglee(2025)]{diagram}
-Cmglee.
-\newblock Phase diagram of water, 2025.
-\newblock URL
-  \url{https://es.m.wikipedia.org/wiki/Archivo:Phase_diagram_of_water.svg#filelinks}.
-
-\bibitem[Jousten(2023)]{jousten2023iso}
-K.~Jousten.
+\bibitem{jousten2023iso}
+Karl Jousten.
 \newblock Iso standards for vacuum metrology.
 \newblock 2023.
 
-\bibitem[Kondepudi and Prigogine(2014)]{kondepudi2014modern}
-D.~Kondepudi and I.~Prigogine.
-\newblock \emph{Modern thermodynamics: from heat engines to dissipative
-  structures}.
-\newblock John wiley \& sons, 2014.
-
-\bibitem[O'Hanlon and Gessert(2023)]{o2023users}
-J.~F. O'Hanlon and T.~A. Gessert.
-\newblock \emph{A users guide to vacuum technology}.
-\newblock John Wiley \& Sons, 2023.
-
-\bibitem[Vacuum(2025)]{pfeiffer2005sd}
-P.~Vacuum.
-\newblock Datasheet de la bomba de vacío alcatel 2005sd, 2025.
-\newblock URL
-  \url{https://www.idealspectroscopy.com/NEW-Alcatel-Adixen-2005SD-2005-SD-Pascal-Dual-Stage\\-Rotary-Vane-Vacuum-Pump---1-phase-115/220VAC/pp/P102308}.
-\newblock Accedido: 2025-05-11.
-
-\bibitem[Van~Atta(1965)]{van1965vacuum}
-C.~M. Van~Atta.
-\newblock \emph{Vacuum science and engineering: properties of gases at low
+\bibitem{van1965vacuum}
+Chester~Murray Van~Atta.
+\newblock {\em Vacuum science and engineering: properties of gases at low
   pressure; vacuum measurements; design and operating features of vacuum pumps
   and systems}.
 \newblock 1965.
+
+\bibitem{o2023users}
+John~F O'Hanlon and Timothy~A Gessert.
+\newblock {\em A users guide to vacuum technology}.
+\newblock John Wiley \& Sons, 2023.
+
+\bibitem{kondepudi2014modern}
+Dilip Kondepudi and Ilya Prigogine.
+\newblock {\em Modern thermodynamics: from heat engines to dissipative
+  structures}.
+\newblock John wiley \& sons, 2014.
+
+\bibitem{ccengel2019termodinamica}
+Yunus~A {\c{C}}engel et~al.
+\newblock {\em Termodin{\'a}mica}.
+\newblock Biblioteca Hern{\'a}n Malo Gonz{\'a}lez, 2019.
+
+\bibitem{pfeiffer2005sd}
+Pfeiffer Vacuum.
+\newblock Datasheet de la bomba de vacío alcatel 2005sd, 2025.
+\newblock Accedido: 2025-05-11.
 
 \end{thebibliography}
