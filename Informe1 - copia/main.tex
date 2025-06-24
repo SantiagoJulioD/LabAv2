@@ -1,0 +1,303 @@
+%% 
+%% Copyright 2007-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+
+%\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+ \documentclass[final,5p,times,twocolumn, nopreprintline]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{amsmath}
+%\usepackage[pdftex,active,tightpage]{preview}
+%\setlength\PreviewBorder{2mm}
+\usepackage{url}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\usepackage[spanish]{babel}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+%% You might want to define your own abbreviated commands for common used terms, e.g.:
+\newcommand{\kms}{km\,s$^{-1}$}
+\newcommand{\msun}{$M_\odot}
+\newcommand{\toplrarr}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
+\numberwithin{equation}{section}
+%\journal{Astronomy $\&$ Computing}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \affiliation for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%            addressline={}, 
+%%            city={},
+%%            postcode={}, 
+%%            state={},
+%%            country={}}
+%% \fntext[label3]{}
+
+\title{Informe 2: uso de la cámara de vacío y medición de la velocidad de bombeo.}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+
+\author[first]{Santiago Julio Dávila}
+\affiliation[first]{organization={Instituto de Física, Universidad de Antioquia},%Department and Organization
+            city={Medellín},
+            state={Antioquia},
+            country={Colombia}}
+
+
+
+%%Graphical abstract
+%\begin{graphicalabstract}
+%\includegraphics{grabs}
+%\end{graphicalabstract}
+
+%%Research highlights
+%\begin{highlights}
+%\item Research highlight 1
+%\item Research highlight 2
+%\end{highlights}
+
+\begin{abstract}
+El presente trabajo muestra una serie de experimentos realizados con una cámara de vacío y una bomba de vacío capaz de producir un vacío grueso al interior de la cámara. Empezando por una revisión del funcionamiento de la bomba y el medidor de presión utilizado, el documento presenta el fundamento detrás de la operación de los dispositivos y la justificación de los experimentos que se basa en la ley de Boyle, el diagrama de fase del agua y la definición de capacidad de bombeo. Si bien se consiguió verificar cualitativamente los dos primeros experimentos, los resultados obtenidos para la capacidad de bombeo fueron no concluyentes, por lo que se proponen también las posibles causas de esta discrepancia.
+\end{abstract}
+
+\begin{keyword}
+
+bomba \sep cámara \sep capacidad de bombeo \sep presión \sep punto de ebullición \sep vacío
+
+\end{keyword}
+
+\end{frontmatter}
+
+%\tableofcontents
+
+%% \linenumbers
+
+%% main text
+
+\section{Introducción}
+
+La capacidad de crear un espacio vacío es fundamental en muchas aplicaciones, tanto en la Física Experimental como en la industria. Para lograr este propósito existe una amplia deversidad de sistemas que, dependiendo de los requerimentos particulares del experimento —o de la producción industrial— pueden generar un vacío más o menos alto.\\
+
+El vacío se caracteriza por la presión al interior de la cámara \cite{jousten2023iso}, así:
+\begin{itemize}
+\item \emph{Vacío grueso (RV):} presión entre 1 mbar y 1 bar.
+\item \emph{Vacío medio (MV):} presión entre $10^{-3}$ mbar y 1 mbar.
+\item \emph{Vacío alto (HV):} presión entre $10^{-7}$ mbar y $10^{-3}$ mbar.
+\item \emph{Vacío ultra alto (UHV):} presión menor que $10^{-7}$ mbar.
+\end{itemize}
+
+El componente fundamental de un sistema de vacío es la bomba de vacío, que se usa para extraer el aire de la cámara y está caracterizada, entre otras cosas, por la velocidad de bombeo, definida como \cite{van1965vacuum}
+
+\begin{equation}
+S=\dfrac{Q}{P}=\dfrac{1}{P}\dfrac{\mathrm{d}(PV)}{\mathrm{d}t} \label{eq1}
+\end{equation}
+
+que, a grandes rasgos, describe la tasa a la cual el gas es evacuado de la cámara. Para este trabajo se utilizó una bomba rotatoria. Otro elemento importante en el sistema es el medidor de presión, o manómetro, que medirá la presión al interior de la cámara y permitirá caracterizar el vacío y medir la velocidad de bombeo de la bomba, en este trabajo se utilizó un medidor de Pirani.\\
+
+El objetivo de este trabajo es verificar experimentalmente, y de manera cualitativa, la ley de Boyle para los gases; mostrar que el agua puede ebullir a temperatura ambiente y explicar por qué lo hace y, finalmente, calcular la velocidad de bombeo de la bomba utilizada.
+
+\section{Marco teórico} 
+
+\subsection{Bomba de veleta rotatoria}
+Un esquema de una bomba de veleta rotatoria se muestra en la figura \ref{fig1}. \emph{Grosso modo}, el funcionamiento de la bomba es el siguiente: el gas entra en la cámara de succión para ser comprimido por el rotor y la veleta en la cámara de compresión y finalmente ser expulsada a la atmósfera a través de la válvula de descarga \cite{o2023users}.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-12 083026.png} 
+\caption{Tomado de \cite{o2023users}. En la figura de muestra la sección transversal de una bomba Pfeiffer DUO-35 de 35 $\text{m}^3/\text{h}$: (1) admisión, (2) filtro, (3) rotor, (4) resorte, (5) veleta, (6) válvula del lastre de gas, (7) filtro, (8) válvula de descarga, (9) escape, (10) superficie selladora, cámaras de (A) succión, (B) compresión y (C) escape.} \label{fig1}
+\end{center}
+\end{figure}
+
+\subsection{Medidor de Pirani}
+
+El funcionamiento del medidor de Pirani está basado en un circuito conocido como \emph{puente de Wheatstone}, como el que se muestra en la figura \ref{fig2}, en el que uno de los brazos es un alambre caliente en un tubo conocido como \emph{tubo de medición}, que en principio será evacuado a una presión lo suficientemente baja y la resistencia del alambre se ajustará para mantener balanceado el circuito. Un aumento en la presión del tubo de medición hace que el incremento en la pérdida radiativa disminuya la resistencia del alambre, desbalanceando el sistema, que será balanceado de nuevo al incrementar el voltaje, lo que hará que el alambre se caliente, aumentando su resistencia. El sistema tiene además un tubo de compensación sellado al vacío tal que se puedan corregir los cambios producidos por temperatura \cite{o2023users}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-12 142024.png} 
+\caption{Tomado de \cite{o2023users}. Circuito del medidor de Pirani.} \label{fig2}
+\end{center}
+\end{figure}
+
+\subsection{Ley de Boyle}
+
+La ley de Boyle es una relación cuantitativa que describe el comportamiento de los gases. En su forma más general, enuncia que \emph{a una temperatura fija $T$, el volumen $V$ de un gas es inversamente proporcional a la presión $P$} \cite{kondepudi2014modern}.
+
+\begin{equation}
+V=\dfrac{f(T)}{P} \label{eq2}
+\end{equation}
+
+\subsection{Diagrama de fase}
+
+También conocido como \emph{diagrama $P-T$}, describe la fase —sólida, líquida o gaseosa— a la cual se encuentra una sustancia a determinadas temperatura $T$ y presión $P$ \cite{ccengel2019termodinamica}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\columnwidth]{../../../../../../../Downloads/langes-512px-Phase_diagram_of_water.svg.png} 
+\caption{Tomado de \cite{diagram}. Diagrama de fase del agua.} \label{fig3}
+\end{center}
+\end{figure}
+
+\section{Metodología}
+
+Para el experimento se utilizaron los siguientes implementos:
+
+\begin{itemize}
+\item Una campana de vidrio cilíndrica de $(20.2\pm0.1)$ cm de altura y $(7.75\pm0.1)$ cm de radio con un domo hemisférico en la parte superior para la cámara de vacío.
+\item Una válvula \emph{shut off}.
+\item Un medidor de presión tipo Pirani.
+\item Una bomba de vacío rotativa Alcatel 2005SD.
+\item Mangueras y sellos.
+\item Un globo.
+\item Recipiente con agua.
+\item Termómetro.
+\end{itemize}
+
+Los implementos se ensamblaron en un sistema como el que se muestra en el esquema de la figura \ref{fig4}. Una vez dispuesto el sistema se realizaron los siguientes procedimientos: primero, dentro de la cámara de vacío se dispusio un globo con poco aire y se procedió a evacuar la cámara para observar qué ocurre con el globo; segundo, dentro de la cámara se colocó un recipiente con agua y un termómetro para monitorear su temperatura, y se evacuó la cámara para verificar que el agua puede ebullir a temperatura ambiente; finalmente, se evacuó la cámara vacía para encontrar la capacidad de bombeo de la bomba de vacío.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\columnwidth]{../../../../../../../Downloads/SmartSelect_20250513_010947_touchnotes.jpg} 
+\caption{Esquema del montaje.} \label{fig4}
+\end{center}
+\end{figure}
+
+\section{Resultados y discusión}
+
+\subsection{Experimento 1: verificación de la ley de Boyle}
+
+Cuando se evacúa la cámara con el globo inflado dentro, se observa que este aumenta su tamaño a medida que la presión en el interior de la cámara disminuye. Esto debido a que el sistema se encuentra en equilibrio mecánico, esto es, que la presión al interior del globo es igual a la presión al exterior. Inicialmente la presión, tanto interna como externa, al globo es la presión atmosférica; al disminuir la presión exterior, la presión interior del globo también disminuye para lo cual, de acuerdo a la ley de Boyle, el glovo debe aumentar su volumen, como se muestra en la figura \ref{fig5}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.4\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-13 020529.png} 
+\caption{Verificación experimental de la ley de Boyle.} \label{fig5}
+\end{center}
+\end{figure}
+
+\subsection{Experimento 2: ebullición del agua}
+
+El punto de ebullición del agua es dependiente tanto de la temperatura como de la presión a la que esta se encuentre, de acuerdo a lo que se evidencia en la figura \ref{fig3}. A una presión de 1 atm el agua hierve a 100 °C, sin embargo, al disminuir la presión por debajo de este nivel se encuentra que la temperatura a la que ebulle el agua disminuye también, de tal modo que, si la presión disminuye lo suficiente, se puede lograr que el agua hierva a temperatura ambiente.
+
+\subsection{Experimento 3: capacidad de bombeo}
+
+Para calcular la capacidad de bombeo de la bomba de vacío se utilizará la ecuación \ref{eq1}, para lo cual se tomaron los datos de la presión arrojados por el medidor de Pirani y se ajustaron los valores de presión menores que 5 mbar. Se observa en los datos una tendencia exponencial, por lo que se hará un ajuste sobre el valor de $\log P$ en lugar de $P$, para obtener una relación lineal dada por
+
+\begin{equation}
+\log \left(\dfrac{P}{\text{mbar}}\right) = mt+b \label{eq3}
+\end{equation}
+
+de modo que, al tomar la derivada respecto al tiempo se encuentra que 
+
+\begin{equation}
+S = mV \label{eq4}
+\end{equation}
+
+donde $m$ es el parámetro de ajuste lineal que determina la pendiente del ajuste lineal y $V$ es el volumen de la cámara $V=(4790\pm40)~\text{cm}^3$.Se realizó el ajuste con \texttt{Python}, dando lugar a un valor de $m=(-2.6\pm0.2)~\text{s}^{-1}$, y a una capacidad de bombeo de $S=(45.6\pm0.9)~\text{m}^3/\text{h}$. En contraste con el valor reportado en el manual de la bomba \cite{pfeiffer2005sd} de 5.4 m$^3$/h, el resultado obtenido por el experimento es no concluyente, posiblemente por fugas del sistema o fallas protocolarias en el proceso de medición o de evacuación de la cámara. En la figura \ref{fig6} se muestra el ajuste realizado.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{../../../../../../../Downloads/fit(1).png} 
+\caption{Ajuste del logaritmo de la presión como función del tiempo.} \label{fig6}
+\end{center}
+\end{figure}
+
+\section{Conclusión}
+
+Como se pudo observar en este trabajo, es posible hacer verificaciones experimentales de leyes empíricas de la termodinámica utilizando un sistema simple de vacío grueso y, en principio, se puede también caracterizar el sistema con su capacidad de bombeo, aunque en este caso no fue posible, se propone para futuros trabajos hacer un estudio juicioso previo de los posibles problemas del sistema para preverlos y obtener un resultado más óptimo.
+
+\bibliographystyle{unsrt} 
+\bibliography{example.bib}
+%
+%\bibliography{bibliography.bib}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+%%\begin{thebibliography}{00}
+
+%% \bibitem[Author(year)]{label}
+%% For example:
+
+%% \bibitem[Aladro et al.(2015)]{Aladro15} Aladro, R., Martín, S., Riquelme, D., et al. 2015, \aas, 579, A101
+
+
+%%\end{thebibliography}
+
+\end{document}
+
+\endinput
+%%
+%% End of file `elsarticle-template-harv.tex'.
