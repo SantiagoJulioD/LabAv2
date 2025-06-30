@@ -38,7 +38,10 @@
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
 \usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,positioning,babel,arrows.meta}
 \usepackage{amsmath}
+\usepackage[utf8]{inputenc}
 %\usepackage[pdftex,active,tightpage]{preview}
 %\setlength\PreviewBorder{2mm}
 \usepackage{url}
@@ -90,7 +93,7 @@
 %%            country={}}
 %% \fntext[label3]{}
 
-\title{Informe 2: uso de la cámara de vacío y medición de la velocidad de bombeo.}
+\title{Caracterización estructural y óptica de una muestra policristalina de $\text{La}_2\text{O}_3$.}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -107,6 +110,11 @@
 %%             postcode={},
 %%             state={},
 %%             country={}}
+
+\author[first]{Sebastián Carrillo Mejía}
+
+\author[first]{Andrés Felipe Riaño Quintanilla}
+
 
 \author[first]{Santiago Julio Dávila}
 \affiliation[first]{organization={Instituto de Física, Universidad de Antioquia},%Department and Organization
@@ -128,12 +136,10 @@
 %\end{highlights}
 
 \begin{abstract}
-El presente trabajo muestra una serie de experimentos realizados con una cámara de vacío y una bomba de vacío capaz de producir un vacío grueso al interior de la cámara. Empezando por una revisión del funcionamiento de la bomba y el medidor de presión utilizado, el documento presenta el fundamento detrás de la operación de los dispositivos y la justificación de los experimentos que se basa en la ley de Boyle, el diagrama de fase del agua y la definición de capacidad de bombeo. Si bien se consiguió verificar cualitativamente los dos primeros experimentos, los resultados obtenidos para la capacidad de bombeo fueron no concluyentes, por lo que se proponen también las posibles causas de esta discrepancia.
+
 \end{abstract}
 
 \begin{keyword}
-
-bomba \sep cámara \sep capacidad de bombeo \sep presión \sep punto de ebullición \sep vacío
 
 \end{keyword}
 
@@ -147,136 +153,99 @@ bomba \sep cámara \sep capacidad de bombeo \sep presión \sep punto de ebullici
 
 \section{Introducción}
 
-La capacidad de crear un espacio vacío es fundamental en muchas aplicaciones, tanto en la Física Experimental como en la industria. Para lograr este propósito existe una amplia deversidad de sistemas que, dependiendo de los requerimentos particulares del experimento —o de la producción industrial— pueden generar un vacío más o menos alto.\\
-
-El vacío se caracteriza por la presión al interior de la cámara \cite{jousten2023iso}, así:
-\begin{itemize}
-\item \emph{Vacío grueso (RV):} presión entre 1 mbar y 1 bar.
-\item \emph{Vacío medio (MV):} presión entre $10^{-3}$ mbar y 1 mbar.
-\item \emph{Vacío alto (HV):} presión entre $10^{-7}$ mbar y $10^{-3}$ mbar.
-\item \emph{Vacío ultra alto (UHV):} presión menor que $10^{-7}$ mbar.
-\end{itemize}
-
-El componente fundamental de un sistema de vacío es la bomba de vacío, que se usa para extraer el aire de la cámara y está caracterizada, entre otras cosas, por la velocidad de bombeo, definida como \cite{van1965vacuum}
-
-\begin{equation}
-S=\dfrac{Q}{P}=\dfrac{1}{P}\dfrac{\mathrm{d}(PV)}{\mathrm{d}t} \label{eq1}
-\end{equation}
-
-que, a grandes rasgos, describe la tasa a la cual el gas es evacuado de la cámara. Para este trabajo se utilizó una bomba rotatoria. Otro elemento importante en el sistema es el medidor de presión, o manómetro, que medirá la presión al interior de la cámara y permitirá caracterizar el vacío y medir la velocidad de bombeo de la bomba, en este trabajo se utilizó un medidor de Pirani.\\
-
-El objetivo de este trabajo es verificar experimentalmente, y de manera cualitativa, la ley de Boyle para los gases; mostrar que el agua puede ebullir a temperatura ambiente y explicar por qué lo hace y, finalmente, calcular la velocidad de bombeo de la bomba utilizada.
-
 \section{Marco teórico} 
 
-\subsection{Bomba de veleta rotatoria}
-Un esquema de una bomba de veleta rotatoria se muestra en la figura \ref{fig1}. \emph{Grosso modo}, el funcionamiento de la bomba es el siguiente: el gas entra en la cámara de succión para ser comprimido por el rotor y la veleta en la cámara de compresión y finalmente ser expulsada a la atmósfera a través de la válvula de descarga \cite{o2023users}.
+\subsection{Difracción de Rayos X}
 
+Se conoce como \emph{difracción de rayos X} (DRX) a la dispersión elástica de fotones de rayos X producida por los átomos de una red periódica \cite{chatterjee2000x}, como se muestra en la figura \ref{fig:bragg}.
 
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=0.5\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-12 083026.png} 
-%\caption{Tomado de \cite{o2023users}. En la figura de muestra la sección transversal de una bomba Pfeiffer DUO-35 de 35 $\text{m}^3/\text{h}$: (1) admisión, (2) filtro, (3) rotor, (4) resorte, (5) veleta, (6) válvula del lastre de gas, (7) filtro, (8) válvula de descarga, (9) escape, (10) superficie selladora, cámaras de (A) succión, (B) compresión y (C) escape.} \label{fig1}
-%\end{center}
-%\end{figure}
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[dot/.style={circle,draw,fill=black,minimum size=5}]
 
-\subsection{Medidor de Pirani}
+%\draw[
+%  help lines,
+%  line width=0.1pt,
+%  gray!30,
+%] (-2, -6) grid[step={($(0.25, 0.25) - (0, 0)$)}] (6, 2);
+%\draw[
+%  help lines,
+%  line width=0.1pt,
+%  gray,
+%] (-2, -6) grid[step={($(1, 1) - (0, 0)$)}] (6, 2);
 
-El funcionamiento del medidor de Pirani está basado en un circuito conocido como \emph{puente de Wheatstone}, como el que se muestra en la figura \ref{fig2}, en el que uno de los brazos es un alambre caliente en un tubo conocido como \emph{tubo de medición}, que en principio será evacuado a una presión lo suficientemente baja y la resistencia del alambre se ajustará para mantener balanceado el circuito. Un aumento en la presión del tubo de medición hace que el incremento en la pérdida radiativa disminuya la resistencia del alambre, desbalanceando el sistema, que será balanceado de nuevo al incrementar el voltaje, lo que hará que el alambre se caliente, aumentando su resistencia. El sistema tiene además un tubo de compensación sellado al vacío tal que se puedan corregir los cambios producidos por temperatura \cite{o2023users}.
+\draw[fill=cyan, fill opacity=0.5] (0,0)--(0,-1)--(0.433,-0.75) -- cycle;
+\draw[fill=cyan, fill opacity=0.5] (0,0)--(0,-1)--(-0.433,-0.75) -- cycle;
 
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=0.5\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-12 142024.png} 
-%\caption{Tomado de \cite{o2023users}. Circuito del medidor de Pirani.} \label{fig2}
-%\end{center}
-%\end{figure}
+\draw (-2,0) -- (2,0);
+\draw (-2,-1) -- (2,-1);
+\draw (-2,-2) -- (2,-2);
 
-\subsection{Ley de Boyle}
+  \foreach \x in {-2,...,2}
+    {\foreach \y in {-2,...,0} 
+       \node[mark size=2pt,color=black] at (\x,\y) {\pgfuseplotmark{*}};
+	 \draw (\x,-2) -- (\x,0);}
+	 
+\draw[red] plot[domain=0:2.309, samples=100]  ({0.866*\x-0.5*0.25*sin(2*\x*pi r)},{0.5*\x+0.866*0.25*sin(2*\x*pi r)});
+\draw[red] plot[domain=-2.309:0, samples=100]  ({0.866*\x+0.5*0.25*sin(2*\x*pi r)},{-0.5*\x+0.866*0.25*sin(2*\x*pi r)});
+\draw[red] plot[domain=0:2.309, samples=100]  ({0.866*\x-0.5*0.25*sin(-2*\x*pi r)},{0.5*\x+0.866*0.25*sin(-2*\x*pi r)-1});
+\draw[red] plot[domain=-2.309:0, samples=100]  ({0.866*\x+0.5*0.25*sin(-2*\x*pi r)},{-0.5*\x+0.866*0.25*sin(-2*\x*pi r)-1});
 
-La ley de Boyle es una relación cuantitativa que describe el comportamiento de los gases. En su forma más general, enuncia que \emph{a una temperatura fija $T$, el volumen $V$ de un gas es inversamente proporcional a la presión $P$} \cite{kondepudi2014modern}.
+\draw[thick, red] (-2,1.1545)--(0,0);
+\draw[thick, red] (-2,0.1545)--(0,-1);
+
+\draw[<->] (-1.25,-2)-- node[left] {$d$}(-1.25,-1);
+
+\draw[-stealth,thick, red] (0,0)--(2,1.1545);
+\draw[-stealth,thick, red] (0,-1)--(2,0.1545);
+
+\draw (1,0) arc (0:30:1) node[midway,right] {$\theta$};
+
+\draw[fill=cyan, fill opacity=0.5] (3.5,-2)--(3.5,1)--(4.799,-1.25) -- cycle;
+\draw[thick,red] (3.5,-2)--(4.799,-1.25) node [midway,below right] {$d\sin\theta$};
+
+%\draw[red] plot[domain=0:1.5, samples=50]  ({0.866*\x+0.5*0.5*sin(\x*pi/1.5 r)+3.5},{0.5*\x-0.866*0.5*sin(\x*pi/1.5 r)-2});
+
+\draw[|<->|] (3.25,-2)-- node[left] {$d$}(3.25,1);
+
+\draw (3.5,0) arc (-90:-60:1) node[midway, below] {$\theta$};
+
+\end{tikzpicture}
+
+\caption{Condición de interferencia constructiva para DRX. Aquí, $\theta$ es el ángulo de incidencia con respecto al plano cristalográfico y $d$ es la distancia interplanar.}
+\end{figure} \label{fig:bragg}
+
+Para obtener una interverencia constructiva en la pantalla de observación se requiere que las ondas estén en fase, esto es, que el desfase inducido por la diferencia de camino óptico, $\Delta\phi=k\Delta r$, sea un múltiplo entero de $2\pi$ \cite{hecht2012optics}, donde $k=2\pi/\lambda$ es el número de onda. De la figura \ref{fig:bragg} es evidente que la diferencia de camino óptico es $\Delta r = 2d\sin\theta$, de modo que la condición para interferencia constructiva es
 
 \begin{equation}
-V=\dfrac{f(T)}{P} \label{eq2}
+n\lambda = 2d_{hkl}\sin\theta. \label{eq:bragg}
 \end{equation}
 
-\subsection{Diagrama de fase}
+La ecuación \ref{eq:bragg} se conoce como \emph{ley de Bragg}, y es válida para $\lambda\leq 2d_{hkl}$. Se ha adoptado la notación $d_{hkl}$ para la distancia interplanar, donde $hkl$ son los \emph{índices de Miller} del plano cristalográfico, que caracterizan su orientación. Para un conjunto de planos $\{hkl\}$ con distancia interplanar fija $d_{hkl}$ solo se obtiene interferencia constructiva para ciertos valores de $\theta$ \cite{kittel2018introduction}, esto gráficamente se evidencia como un conjunto de deltas de Dirac en los valores de $\theta$ para los cuales se satisface la ley de Bragg, y a partir del cual se pueden obtener los parámetros de red del cristal \cite{ds1989simple}.\\
 
-También conocido como \emph{diagrama $P-T$}, describe la fase —sólida, líquida o gaseosa— a la cual se encuentra una sustancia a determinadas temperatura $T$ y presión $P$ \cite{ccengel2019termodinamica}.
+Si se tiene una muestra policristalina, estos picos presentan un ensanchamiento debido a diferentes efectos, siendo de particular interés los ensanchamientos por \emph{tamaño medio del cristalito} y \emph{microtensiones}, que pueden modelarse a través de la ecuación
 
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=0.8\columnwidth]{../../../../../../../Downloads/langes-512px-Phase_diagram_of_water.svg.png} 
-%\caption{Tomado de \cite{diagram}. Diagrama de fase del agua.} \label{fig3}
-%\end{center}
-%\end{figure}
+\begin{equation}
+B_{hkl}\cos\theta=\dfrac{K\lambda}{L}+\epsilon(4\sin\theta) \label{eq:wh1}
+\end{equation}
+
+donde $B_{hkl}$ es el ancho a media altura del pico correspondiente al plano con índices $hkl$, $L$ es el tamaño medio del cristalito, $\epsilon$ es la deformación del cristal y $K$ es la constante de Scherrer, que suele tomarse aproximadamente igual a 1. Si se definen $X=4\sin\theta$ y $Y=B_{hkl}\cos\theta$ en a ecuación \ref{eq:wh1}, se pueden obtener el tamaño del cristalito y la deformación media a través de un ajuste lineal de la forma $Y=b+mX$
+
+\begin{align}
+L=\dfrac{K\lambda}{b}\\
+\epsilon=m,
+\end{align} \label{eq:wh2}
+
+este proceso se conoce como el \emph{método de Williamson-Hall} \cite{himabindu2021microstructural}.
+
+
+\subsection{Espectrofotometría}
 
 \section{Metodología}
 
-Para el experimento se utilizaron los siguientes implementos:
-
-\begin{itemize}
-\item Una campana de vidrio cilíndrica de $(20.2\pm0.1)$ cm de altura y $(7.75\pm0.1)$ cm de radio con un domo hemisférico en la parte superior para la cámara de vacío.
-\item Una válvula \emph{shut off}.
-\item Un medidor de presión tipo Pirani.
-\item Una bomba de vacío rotativa Alcatel 2005SD.
-\item Mangueras y sellos.
-\item Un globo.
-\item Recipiente con agua.
-\item Termómetro.
-\end{itemize}
-
-Los implementos se ensamblaron en un sistema como el que se muestra en el esquema de la figura \ref{fig4}. Una vez dispuesto el sistema se realizaron los siguientes procedimientos: primero, dentro de la cámara de vacío se dispusio un globo con poco aire y se procedió a evacuar la cámara para observar qué ocurre con el globo; segundo, dentro de la cámara se colocó un recipiente con agua y un termómetro para monitorear su temperatura, y se evacuó la cámara para verificar que el agua puede ebullir a temperatura ambiente; finalmente, se evacuó la cámara vacía para encontrar la capacidad de bombeo de la bomba de vacío.
-
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=\columnwidth]{../../../../../../../Downloads/SmartSelect_20250513_010947_touchnotes.jpg} 
-%\caption{Esquema del montaje.} \label{fig4}
-%\end{center}
-%\end{figure}
-
 \section{Resultados y discusión}
 
-\subsection{Experimento 1: verificación de la ley de Boyle}
-
-Cuando se evacúa la cámara con el globo inflado dentro, se observa que este aumenta su tamaño a medida que la presión en el interior de la cámara disminuye. Esto debido a que el sistema se encuentra en equilibrio mecánico, esto es, que la presión al interior del globo es igual a la presión al exterior. Inicialmente la presión, tanto interna como externa, al globo es la presión atmosférica; al disminuir la presión exterior, la presión interior del globo también disminuye para lo cual, de acuerdo a la ley de Boyle, el glovo debe aumentar su volumen, como se muestra en la figura \ref{fig5}.
-
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=0.4\columnwidth]{../../../../../../Imágenes/Screenshots/Captura de pantalla 2025-05-13 020529.png} 
-%\caption{Verificación experimental de la ley de Boyle.} \label{fig5}
-%\end{center}
-%\end{figure}
-
-\subsection{Experimento 2: ebullición del agua}
-
-El punto de ebullición del agua es dependiente tanto de la temperatura como de la presión a la que esta se encuentre, de acuerdo a lo que se evidencia en la figura \ref{fig3}. A una presión de 1 atm el agua hierve a 100 °C, sin embargo, al disminuir la presión por debajo de este nivel se encuentra que la temperatura a la que ebulle el agua disminuye también, de tal modo que, si la presión disminuye lo suficiente, se puede lograr que el agua hierva a temperatura ambiente.
-
-\subsection{Experimento 3: capacidad de bombeo}
-
-Para calcular la capacidad de bombeo de la bomba de vacío se utilizará la ecuación \ref{eq1}, para lo cual se tomaron los datos de la presión arrojados por el medidor de Pirani y se ajustaron los valores de presión menores que 5 mbar. Se observa en los datos una tendencia exponencial, por lo que se hará un ajuste sobre el valor de $\log P$ en lugar de $P$, para obtener una relación lineal dada por
-
-\begin{equation}
-\log \left(\dfrac{P}{\text{mbar}}\right) = mt+b \label{eq3}
-\end{equation}
-
-de modo que, al tomar la derivada respecto al tiempo se encuentra que 
-
-\begin{equation}
-S = mV \label{eq4}
-\end{equation}
-
-donde $m$ es el parámetro de ajuste lineal que determina la pendiente del ajuste lineal y $V$ es el volumen de la cámara $V=(4790\pm40)~\text{cm}^3$.Se realizó el ajuste con \texttt{Python}, dando lugar a un valor de $m=(-2.6\pm0.2)~\text{s}^{-1}$, y a una capacidad de bombeo de $S=(45.6\pm0.9)~\text{m}^3/\text{h}$. En contraste con el valor reportado en el manual de la bomba \cite{pfeiffer2005sd} de 5.4 m$^3$/h, el resultado obtenido por el experimento es no concluyente, posiblemente por fugas del sistema o fallas protocolarias en el proceso de medición o de evacuación de la cámara. En la figura \ref{fig6} se muestra el ajuste realizado.
-
-%\begin{figure}[h!]
-%\begin{center}
-%\includegraphics[width=0.7\columnwidth]{../../../../../../../Downloads/fit(1).png} 
-%\caption{Ajuste del logaritmo de la presión como función del tiempo.} \label{fig6}
-%\end{center}
-%\end{figure}
-
 \section{Conclusión}
-
-Como se pudo observar en este trabajo, es posible hacer verificaciones experimentales de leyes empíricas de la termodinámica utilizando un sistema simple de vacío grueso y, en principio, se puede también caracterizar el sistema con su capacidad de bombeo, aunque en este caso no fue posible, se propone para futuros trabajos hacer un estudio juicioso previo de los posibles problemas del sistema para preverlos y obtener un resultado más óptimo.
 
 \bibliographystyle{unsrt} 
 \bibliography{example.bib}

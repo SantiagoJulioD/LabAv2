@@ -3,47 +3,50 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: example.bib
-Warning--empty journal in jousten2023iso
-Warning--empty publisher in van1965vacuum
-You've used 6 entries,
+Illegal end of database file---line 49 of file example.bib
+ : 
+ : 
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 5 entries,
             1791 wiz_defined-function locations,
-            472 strings with 4229 characters,
-and the built_in function-call counts, 913 in all, are:
-= -- 70
-> -- 36
+            478 strings with 4242 characters,
+and the built_in function-call counts, 1066 in all, are:
+= -- 98
+> -- 38
 < -- 0
 + -- 15
-- -- 9
-* -- 25
-:= -- 151
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 2
+- -- 10
+* -- 67
+:= -- 174
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 53
-empty$ -- 109
-format.name$ -- 9
-if$ -- 209
+cite$ -- 5
+duplicate$ -- 47
+empty$ -- 111
+format.name$ -- 10
+if$ -- 233
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 9
-newline$ -- 33
-num.names$ -- 6
-pop$ -- 41
+int.to.str$ -- 5
+missing$ -- 7
+newline$ -- 28
+num.names$ -- 5
+pop$ -- 17
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 17
+skip$ -- 14
 stack$ -- 0
-substring$ -- 0
+substring$ -- 81
 swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 6
-width$ -- 7
-write$ -- 60
-(There were 2 warnings)
+warning$ -- 0
+while$ -- 11
+width$ -- 6
+write$ -- 55
+(There was 1 error message)
