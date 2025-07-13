@@ -245,13 +245,68 @@ este proceso se conoce como el \emph{método de Williamson-Hall} \cite{himabindu
 
 \subsection{Difracción de rayos X}
 
-La obtención del espectrograma se obtuvo en el \textit{Laboratorio de Difracción de Rayos X} de la Universidad de Antioquia. Allí se preparó una muestra en polvo de óxido de lantano $\text{La}_2\text{O}_3$ para ser analizada con el difractómetro del laboratorio. La muestra debe ser pasante malla 100 para garantizar que la distribución de tamaño de partículas sea homogénea. La muestra es entonces disupesta en el portamuestras y compactada, garantizando una superficie plana, para poder ser insertada en el difractómetro. El difractograma obtenido se analizó usando el software \textit{VESTA}, \textit{FullProf Suite} y Python, donde se comparó con los datos obtenidos de la base de datos \textit{Crystallographic Open Database (COD)} \cite{zachariasen1926kristallstruktur}, para obtener los parámetros de red del cristal.
+La obtención del espectrograma se obtuvo en el \textit{Laboratorio de Difracción de Rayos X} de la Universidad de Antioquia. Allí se preparó una muestra en polvo de óxido de lantano $\text{La}_2\text{O}_3$ para ser analizada con el difractómetro del laboratorio. La muestra debe ser pasante malla 100 para garantizar que la distribución de tamaño de partículas sea homogénea. La muestra es entonces disupesta en el portamuestras y compactada, garantizando una superficie plana, para poder ser insertada en el difractómetro. El difractograma obtenido se analizó usando el software \textit{VESTA}, \textit{FullProf Suite} y Python, donde se comparó con los datos obtenidos de la base de datos \textit{Crystallographic Open Database (COD)} \cite{zachariasen1926kristallstruktur}, para obtener los parámetros de red del cristal y se utilizaron los datos de los picos del difractograma para obtener el tamaño del cristalto y los esfuerzos internos de la estructura policristalina a través del método de Williamson-Hall descrito en la sección interior.
 
 \section{Resultados y discusión}
 
 \subsection{Difracción de rayos X}
 
+La figura \ref{fig:rawxrd} muestra los datos sin procesar, junto con los datos de fondo, extraídos con el software \textit{FullProf Suite} y ajustados a una exponencial decreciente para posteriormente ser restados del difractograma.
 
+\begin{figure}[h!]
+
+\centering
+\includegraphics[width=0.8\columnwidth]{../raw_xrd.png} \label{fig:rawxrd}
+\caption{Difractograma obtenido de la medición y datos de fondo.}
+\end{figure}
+
+El difractograma sin los datos de fondo es entonces comparado con los datos de COD para identificar los índices de Miller de los picos de difracción. Se consideraron solamente los picos más promientes y se tomó como referencia la intensidad relativa al máximo para la identificación de los índices con los de los picos de la base de datos y los índices reportados en la literatura \cite{kabir2018influence}, obteniendo:
+
+\begin{figure}[h!]
+
+\centering
+\includegraphics[width=\columnwidth]{../peaks.png} \label{fig:filtxrd}
+\caption{Difractograma sin el ruido de fondo y datos de COD.}
+\end{figure}
+
+Estos datos fueron procesados con el software \textit{VESTA} para obtener los parámetros de red y una imagen tridimensional de la molécula. Los parámetros de red obtenidos son:
+
+\begin{align*}
+&a=b=3.957~\text{\r{A}},~c=6.138~\text{\r{A}}\\
+&\alpha=\beta=90^\circ,~\gamma=120^\circ
+\end{align*}
+
+Estos valores para los parámetros de red son característicos de una estructura hexagonal \citep{kittel2018introduction}. En la figura \ref{fig:molecule} se observa el modelo molecular tridimensional del $\text{La}_2\text{O}_3$.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\columnwidth]{../4102405.pdf} \label{fig:molecule}
+\caption{Modelo molecular del óxido de lantano. En verde se observan los átomos de lantano, en rojo los átomos de oxígeno.}
+\end{figure}
+
+Se obtuvieron además los planos cristalográficos en el modelo molecular, que se muestran en la figura \ref{fig:planes}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\columnwidth]{../4102405_planes.pdf} \label{fig:planes}
+\caption{Planos cristalográficos en el modelo molecular del óxido de lantano. En rosado se observa el plano [100], en azul el plano [002], en amarillo el plano [101], en verde el plano [102], en naranja el plano [110].}
+\end{figure}
+
+Finalmente, con la función \texttt{peak\_widths} de la librería \texttt{scipy.signal} de Python se obtuvieron los anchos a media altura, que con las posiciones angulares de los picos se pueden ajustar a la ecuación \ref{eq:wh1} y con las ecuaciones \ref{eq:wh2} se obtienen los valores del tamaño de cristalito y el esfuerzo interno medio de la muestra analizada:
+
+\begin{align*}
+L=(39.8\pm0.1)~\text{\r{A}}\\
+\epsilon=(0.3\pm0.1)
+\end{align*}
+
+El ajuste al método de Williamson-Hall se muestra en la figura \ref{fig:wh}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\columnwidth]{../wh.png} \label{fig:wh}
+\caption{Ajuste de Williamson-Hall para el óxido de lantano.}
+\end{figure}
 
 \section{Conclusión}
 
@@ -269,7 +324,6 @@ La obtención del espectrograma se obtuvo en el \textit{Laboratorio de Difracci�
 %% For example:
 
 %% \bibitem[Aladro et al.(2015)]{Aladro15} Aladro, R., Martín, S., Riquelme, D., et al. 2015, \aas, 579, A101
-
 
 %%\end{thebibliography}
 

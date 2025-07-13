@@ -8,45 +8,45 @@ I was expecting a `,' or a `}'---line 49 of file example.bib
  : @article{zachariasen1926kristallstruktur,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 6 entries,
+You've used 7 entries,
             1791 wiz_defined-function locations,
-            487 strings with 4507 characters,
-and the built_in function-call counts, 1288 in all, are:
-= -- 121
-> -- 42
+            495 strings with 4753 characters,
+and the built_in function-call counts, 1518 in all, are:
+= -- 137
+> -- 59
 < -- 0
-+ -- 17
-- -- 11
-* -- 84
-:= -- 208
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 4
++ -- 23
+- -- 16
+* -- 105
+:= -- 249
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 5
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 56
-empty$ -- 135
-format.name$ -- 11
-if$ -- 281
+cite$ -- 7
+duplicate$ -- 65
+empty$ -- 155
+format.name$ -- 16
+if$ -- 329
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 8
-newline$ -- 33
-num.names$ -- 6
-pop$ -- 18
+int.to.str$ -- 7
+missing$ -- 9
+newline$ -- 38
+num.names$ -- 7
+pop$ -- 19
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 17
+skip$ -- 20
 stack$ -- 0
-substring$ -- 106
-swap$ -- 6
+substring$ -- 115
+swap$ -- 7
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 14
-width$ -- 7
-write$ -- 66
+while$ -- 16
+width$ -- 8
+write$ -- 77
 (There was 1 error message)
